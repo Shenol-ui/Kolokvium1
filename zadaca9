@@ -1,0 +1,32 @@
+// Од стандарден влез се читаат непознат број на хексадецимални цифри се додека не се внесе точка (.). 
+// Ваша задача е да го пресметате декадниот збир на внесените хексадецимални цифри. 
+// Доколку добиениот декаден збир е делив со 16 се печати Pogodok. 
+// Доколку истиот тој збир покрај што е делив со 16 плус завршува на 16 (последните цифри му се 1 и 6), се печати Poln pogodok инаку се печати самиот збир.
+// -------------------------------
+#include <iostream>
+using namespace std;
+
+int main() {
+    int suma = 0;
+    bool loop = true;
+    while (loop){
+        char hexNum;
+        cin>> hexNum;
+        if (hexNum =='.') break;
+        if (hexNum >='0' && hexNum <='9') suma+= hexNum - '0';
+        if (hexNum >='a' && hexNum <='f') suma+= hexNum - 'a'+10;
+        if (hexNum >='A' && hexNum <='F') suma+= hexNum - 'A'+10;
+    }
+    if (suma%16==0){
+        if ((suma%10==6) && (suma/10)%10==1){
+            cout<<"Poln pogodok";
+            return 0;
+        }
+        else {
+            cout<<"Pogodok";
+            return 0;
+        }
+    }
+    else cout<<suma;
+    return 0;
+}
