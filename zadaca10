@@ -1,0 +1,40 @@
+// Цик-цак е број за кој што важи дека за секој пар соседни цифри, тие се наизменично поголеми односно помали една во однос на друга. 
+// На пример, ако бројот x е составен од цифрите a, b, c, d и е, тогаш за нив важи:
+//a>b, b<c, c>d, d<e или a<b, b>c, c<d, d>e
+//----------------------------------------
+#include <iostream>
+using namespace std;
+
+int main(){
+    int br,startBr;
+    while(true){
+        cin>>br;
+        if (!br) break;
+        startBr=br;
+        if(br<10) continue;
+        int znak;
+        if(br%10>br/10%10){
+            znak = 1;
+        }else if(br%10<br/10%10){
+            znak = 0;
+        }else continue;
+
+        while(br!=0){
+            br/=10;
+            if(br<10){
+                cout<<startBr<<endl;
+                break;
+            }
+            if(znak){
+                if(br%10>=br/10%10) break;
+            }else{
+                if(br%10<=br/10%10) break;
+            }
+            znak=!znak;
+        }
+
+    }
+
+
+    return 0;
+}
